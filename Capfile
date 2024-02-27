@@ -7,7 +7,7 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/rvm'
-require 'whenever/capistrano'
+#srequire 'whenever/capistrano'
 require 'capistrano/yarn'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
