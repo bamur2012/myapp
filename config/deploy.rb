@@ -5,6 +5,7 @@ set :application, 'myapp'
 set :repo_url, 'git@github.com:bamur2012/myapp.git'
 set :deploy_to, "/home/bamur/myapp/#{fetch(:application)}"
 set :user, 'bamur'
+set :rvm_ruby_string, '3.0.1@myapp'
 
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads]
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
