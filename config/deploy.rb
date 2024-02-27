@@ -5,7 +5,13 @@ set :application, 'myapp'
 set :repo_url, 'git@github.com:bamur2012/myapp.git'
 set :deploy_to, "/home/bamur/myapp/#{fetch(:application)}"
 set :user, 'bamur'
-set :rvm_ruby_string, '3.0.1@myapp'
+set :default_environment, {
+#  'PATH' => "/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:/path/to/.rvm/ree-1.8.7-2009.10/bin:$PATH",
+  'RUBY_VERSION' => 'ruby 3.0.1',
+#  'GEM_HOME'     => '/path/to/.rvm/gems/ree-1.8.7-2010.01',
+#  'GEM_PATH'     => '/path/to/.rvm/gems/ree-1.8.7-2010.01',
+#  'BUNDLE_PATH'  => '/path/to/.rvm/gems/ree-1.8.7-2010.01'  # If you are using bundler.
+}
 
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads]
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
