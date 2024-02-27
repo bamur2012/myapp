@@ -3,7 +3,7 @@ lock '3.18.0'
 
 set :application, 'myapp'
 set :repo_url, 'git@github.com:bamur2012/myapp.git'
-set :deploy_to, "/home/bamur/myapp/#{fetch(:application)}"
+set :deploy_to, "/home/bamur/#{fetch(:application)}"
 set :user, 'bamur'
 set :rvm_ruby_version, '3.0.1'
 
