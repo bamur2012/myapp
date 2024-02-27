@@ -54,6 +54,15 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano', '~> 3.14', require: false
+  gem 'capistrano3-puma'
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-ssh-doctor', '~> 1.0'
+  gem 'capistrano-yarn'
+  gem 'bullet', '~> 7.0', '>= 7.0.1' #reducing the number of queries
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
