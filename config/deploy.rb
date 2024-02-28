@@ -5,7 +5,7 @@ set :application, 'myapp'
 set :repo_url, 'git@github.com:bamur2012/myapp.git'
 set :deploy_to, "/home/bamur/#{fetch(:application)}"
 set :user, 'bamur'
-
+set :rvm_ruby_version, '3.0.1'
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads]
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
@@ -56,7 +56,7 @@ namespace :deploy do
   task :check_revision do
     on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/main`
-        puts 'WARNING: HEAD is not the same as origin/master'
+        puts 'WARNING: HEAD is not the same as origin/main'
         puts 'Run `git push` to sync changes.'
         exit
       end
