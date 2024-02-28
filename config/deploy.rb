@@ -21,9 +21,9 @@ set :deploy_via,      :remote_cache
 # Don't change these unless you know what you're doing
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w[~/.ssh/id_rsa.pub] }
 
-set :puma_bind,       'unix:///home/bamur/myapp/puma.sock'
-set :puma_state,      '/home/bamur/myapp/puma.state'
-set :puma_pid,        '/home/bamur/myapp/puma.pid'
+set :puma_bind,       'unix:///home/bamur/myapp/current/puma.sock'
+set :puma_state,      '/home/bamur/myapp/current/puma.state'
+set :puma_pid,        '/home/bamur/myapp/current/puma.pid'
 
 set :puma_access_log, "#{release_path}/log/puma.error.log"
 set :puma_error_log,  "#{release_path}/log/puma.access.log"
