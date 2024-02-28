@@ -1,17 +1,23 @@
 # config valid only for current version of Capistrano
 lock '3.18.0'
 
-set :application, 'myapp'
-set :repo_url, 'git@github.com:bamur2012/myapp.git'
-set :deploy_to, "/home/bamur/#{fetch(:application)}"
 set :user, 'bamur'
+stt :application, 'myapp'
 set :rvm_ruby_version, '3.0.1'
 
-set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads]
+set :repo_url, 'git@github.com:bamur2012/myapp.git'
+set :deploy_to, "/home/#{fetch(:user)}/#{fetch(:application)}"
+#set :deploy_to, "/home/bamur/myapp/current"
+
+
+
+#append :linked_files 'config/database.yml', 'config/secrets.yml'
+set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 set :puma_threads, [4, 16]
 set :puma_workers, 2
+
 
 set :pty,             false
 set :use_sudo,        false
@@ -21,11 +27,11 @@ set :deploy_via,      :remote_cache
 # Don't change these unless you know what you're doing
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w[~/.ssh/id_rsa.pub] }
 
-set :puma_bind,       'unix:///home/bamur/myapp/current/puma.sock'
-set :puma_state,      '/home/bamur/myapp/current/puma.state'
-set :puma_pid,        '/home/bamur/myapp/current/puma.pid'
+set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
+set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid,       "#{shared_path}/tmp/pids/puma.pid"
 
-set :puma_access_log, "#{release_path}/log/puma.error.log"
+set :puma_access_log,  "#{release_path}/log/puma.error.log"
 set :puma_error_log,  "#{release_path}/log/puma.access.log"
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
