@@ -1,13 +1,15 @@
 # Place in /config/puma/production.rb
 
-rails_env = 'production'
+rrails_env = 'production'
 environment rails_env
+
+#environment ENV.fetch('RAILS_ENV', 'production')
 
 app_dir = '/home/bamur/myapp/current' # Update me with your root rails app path
 
-bind "unix://#{app_dir}/puma.sock"
-pidfile "#{app_dir}/puma.pid"
-state_path "#{app_dir}/puma.state"
+bind "unix:///home/bamur/myapp/current/shared/tmp/sockets/myapp-puma.sock"
+pidfile "#{app_dir}/shared/tmp/pids/puma.pid"
+state_path "#{app_dir}/shared/tmp/pids/puma.state"
 directory "#{app_dir}/"
 
 stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
