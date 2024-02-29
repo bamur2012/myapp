@@ -3,7 +3,7 @@
 rails_env = 'production'
 environment rails_env
 
-app_dir = '/home/bamur/.rvm/gems/ruby-3.0.1/bin/puma' # Update me with your root rails app path
+app_dir = '/home/bamur/myapp/current' # Update me with your root rails app path
 
 bind "unix://#{app_dir}/puma.sock"
 pidfile "#{app_dir}/puma.pid"
